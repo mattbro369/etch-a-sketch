@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --colNum: 1;
+  --rowNum: 1;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -22,9 +27,11 @@
   height: 400px;
   width: 400px;
   border: 2px solid red;
+  grid-template-columns: repeat(var(--colNum), auto);
+  grid-template-rows: repeat(var(--rowNum), auto);
 }
 
-.grid {
+.grid-items {
   border: 1px solid black;
 }
 

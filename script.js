@@ -2,24 +2,34 @@ const getContainer = document.getElementById("container");
 const newDiv = document.createElement("div");
 const button = document.getElementById("button");
 let numOfSquares;
+let gridColNum;
+let htmlStyles = window.getComputedStyle(document.querySelector("html"));
+let colNum = parseInt(htmlStyles.getPropertyValue("--colNum"));
+let rowNum = parseInt(htmlStyles.getPropertyValue("--rowNum"));
 
-//TODO CSS Grid to layout according to numofsquares
+//TODO ADD CLEAR TO BUTTON
+//TODO SHRINK / GROW GRID ITEMS
 
 button.addEventListener("click", () => {
+  if (numOfSquares !== undefined) {
+  }
   getNumOfSquares();
   for (i = 0; i < numOfSquares; i++) {
     const newDiv = document.createElement("div");
     newDiv.innerText = `${i + 1}`;
     getContainer.appendChild(newDiv);
-    newDiv.classList.add("grid");
+    newDiv.classList.add("grid-items");
 
-    let grids = document.querySelectorAll(".grid");
+    let grids = document.querySelectorAll(".grid-items");
     for (let grid of grids) {
       grid.addEventListener("mouseover", () => {
         grid.classList.add("gridHover");
       });
     }
   }
+  calcGridColNum();
+  document.documentElement.style.setProperty("--colNum", gridColNum);
+  document.documentElement.style.setProperty("--rowNum", gridColNum);
 });
 
 function getNumOfSquares() {
@@ -29,4 +39,9 @@ function getNumOfSquares() {
   }
   numOfSquares *= numOfSquares;
   return numOfSquares;
+}
+
+function calcGridColNum() {
+  gridColNum = Math.sqrt(numOfSquares);
+  return gridColNum;
 }
