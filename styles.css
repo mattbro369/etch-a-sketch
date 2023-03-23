@@ -27,8 +27,8 @@
   height: 400px;
   width: 400px;
   border: 2px solid red;
-  grid-template-columns: repeat(var(--colNum), auto);
-  grid-template-rows: repeat(var(--rowNum), auto);
+  grid-template-columns: repeat(var(--colNum), 1fr);
+  grid-template-rows: repeat(var(--rowNum), 1fr);
 }
 
 .grid-items {
