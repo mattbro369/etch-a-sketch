@@ -3,6 +3,8 @@ const newDiv = document.createElement("div");
 const button = document.getElementById("button");
 let numOfSquares;
 let gridColNum;
+
+//For the CSS Variables
 let htmlStyles = window.getComputedStyle(document.querySelector("html"));
 let colNum = parseInt(htmlStyles.getPropertyValue("--colNum"));
 let rowNum = parseInt(htmlStyles.getPropertyValue("--rowNum"));
@@ -16,11 +18,12 @@ button.addEventListener("click", () => {
   getNumOfSquares();
   for (i = 0; i < numOfSquares; i++) {
     const newDiv = document.createElement("div");
-    newDiv.innerText = `${i + 1}`;
+    // newDiv.innerText = `${i + 1}`;
     getContainer.appendChild(newDiv);
     newDiv.classList.add("grid-items");
   }
-  addHoverClass();
+
+  getContainer.addEventListener("mouseover", changeColour);
 
   calcGridColNum();
   document.documentElement.style.setProperty("--colNum", gridColNum);
@@ -36,12 +39,9 @@ function getNumOfSquares() {
   return numOfSquares;
 }
 
-function addHoverClass() {
-  let grids = document.querySelectorAll(".grid-items");
-  for (let grid of grids) {
-    grid.addEventListener("mouseover", () => {
-      grid.classList.add("gridHover");
-    });
+function changeColour(e) {
+  if (e.target.className === "grid-items") {
+    e.target.classList.add("gridHover");
   }
 }
 
