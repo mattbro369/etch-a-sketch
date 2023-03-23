@@ -9,25 +9,22 @@ let htmlStyles = window.getComputedStyle(document.querySelector("html"));
 let colNum = parseInt(htmlStyles.getPropertyValue("--colNum"));
 let rowNum = parseInt(htmlStyles.getPropertyValue("--rowNum"));
 
-//TODO SHRINK / GROW GRID ITEMS
+getContainer.addEventListener("mouseover", changeColour);
 
 button.addEventListener("click", () => {
   if (numOfSquares !== undefined) {
     clearGrid();
   }
   getNumOfSquares();
+  calcGridColNum();
+  document.documentElement.style.setProperty("--colNum", gridColNum);
+  document.documentElement.style.setProperty("--rowNum", gridColNum);
   for (i = 0; i < numOfSquares; i++) {
     const newDiv = document.createElement("div");
     // newDiv.innerText = `${i + 1}`;
     getContainer.appendChild(newDiv);
     newDiv.classList.add("grid-items");
   }
-
-  getContainer.addEventListener("mouseover", changeColour);
-
-  calcGridColNum();
-  document.documentElement.style.setProperty("--colNum", gridColNum);
-  document.documentElement.style.setProperty("--rowNum", gridColNum);
 });
 
 function getNumOfSquares() {
