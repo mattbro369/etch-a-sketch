@@ -12,6 +12,7 @@ let rowNum = parseInt(htmlStyles.getPropertyValue("--rowNum"));
 
 button.addEventListener("click", () => {
   if (numOfSquares !== undefined) {
+    clearGrid();
   }
   getNumOfSquares();
   for (i = 0; i < numOfSquares; i++) {
@@ -44,4 +45,10 @@ function getNumOfSquares() {
 function calcGridColNum() {
   gridColNum = Math.sqrt(numOfSquares);
   return gridColNum;
+}
+
+function clearGrid() {
+  while (getContainer.firstChild) {
+    getContainer.removeChild(getContainer.firstChild);
+  }
 }
