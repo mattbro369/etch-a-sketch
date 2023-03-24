@@ -1,5 +1,7 @@
+//TODO Add random RGB with mouseover
+//TODO Add 10% black increase with each mouseover
+
 const getContainer = document.getElementById("container");
-// const newDiv = document.createElement("div");
 const button = document.getElementById("button");
 let numOfSquares = 16 * 16;
 let gridColNum = 16;
@@ -8,6 +10,11 @@ let gridColNum = 16;
 let htmlStyles = window.getComputedStyle(document.querySelector("html"));
 let colNum = parseInt(htmlStyles.getPropertyValue("--colNum"));
 let rowNum = parseInt(htmlStyles.getPropertyValue("--rowNum"));
+
+// let colourArray = [];
+// let red = parseInt(htmlStyles.getPropertyValue("--red"));
+// let green = parseInt(htmlStyles.getPropertyValue("--green"));
+// let blue = parseInt(htmlStyles.getPropertyValue("--blue"));
 
 //Print the default grid of 16 x 16
 appendDivs();
@@ -40,9 +47,12 @@ function appendDivs() {
   document.documentElement.style.setProperty("--rowNum", gridColNum);
 }
 
+//TODO Add functionality to turn colour 10% more black on repeated mouseover
+
 function changeColour(e) {
   if (e.target.className === "grid-items") {
-    e.target.classList.add("gridHover");
+    e.target.style.backgroundColor = `rgb(${calcRandomNum()}, ${calcRandomNum()}, ${calcRandomNum()})`;
+    //Prototype for RGB colour randomizer
   }
 }
 
@@ -55,4 +65,8 @@ function clearGrid() {
   while (getContainer.firstChild) {
     getContainer.removeChild(getContainer.firstChild);
   }
+}
+
+function calcRandomNum() {
+  return (randomNum = Math.floor(Math.random() * 256));
 }
