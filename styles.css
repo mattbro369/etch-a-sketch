@@ -7,6 +7,9 @@
 :root {
   --colNum: 1;
   --rowNum: 1;
+  --red: 255;
+  --green: 255;
+  --blue: 255;
 }
 
 .wrapper {
@@ -36,5 +39,6 @@
 }
 
 .gridHover {
-  background-color: black;
+  /* background-color: black; */
+  background-color: rgb(var(--red), var(--green), var(--blue));
 }
