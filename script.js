@@ -66,7 +66,7 @@ function changeColour(e) {
       e.target.getAttribute("style") === "")
   ) {
     e.target.style.backgroundColor = `rgb(${calcRandomNum()}, ${calcRandomNum()}, ${calcRandomNum()})`;
-  } else {
+  } else if (e.target.className === "grid-items") {
     let targetStyle = e.target.style.backgroundColor;
     targetStyle = targetStyle.slice(4, -1);
     targetStyle = targetStyle.replaceAll(",", "");
