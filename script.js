@@ -1,6 +1,3 @@
-//TODO Add random RGB with mouseover
-//TODO Add 10% black increase with each mouseover
-
 const getContainer = document.getElementById("container");
 const button = document.getElementById("button");
 let numOfSquares = 16 * 16;
@@ -11,12 +8,6 @@ let htmlStyles = window.getComputedStyle(document.querySelector("html"));
 let colNum = parseInt(htmlStyles.getPropertyValue("--colNum"));
 let rowNum = parseInt(htmlStyles.getPropertyValue("--rowNum"));
 
-// let colourArray = [];
-// let red = parseInt(htmlStyles.getPropertyValue("--red"));
-// let green = parseInt(htmlStyles.getPropertyValue("--green"));
-// let blue = parseInt(htmlStyles.getPropertyValue("--blue"));
-
-//Print the default grid of 16 x 16
 appendDivs();
 
 getContainer.addEventListener("mouseover", changeColour);
@@ -101,17 +92,3 @@ function calcRandomNum() {
 function reduceNum(item, index, arr) {
   arr[index] = item * 10;
 }
-
-// TEST CODE
-
-// test = getContainer.firstChild.style.backgroundColor;
-// testSplit = test.slice(4, -1);
-// testSplit = testSplit.replaceAll(",", "");
-// let testArray = testSplit.split(" ");
-// testArray = testArray.map(Number);
-// testArray.forEach(function reduceNum(item, index, arr) {
-//   arr[index] = item - item / 10;
-// // });
-// e.target.style.backgroundColor = `rgb(${Math.round(testArray[0])}, ${Math.round(
-//   testArray[1]
-// )}, ${Math.round(testArray[2])})`;
