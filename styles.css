@@ -27,13 +27,15 @@ body {
   margin-top: 65px;
   padding: 10px;
   border-radius: 8px;
+  background-color: #6b7abb;
+  border-color: #df80ff;
 }
 
 #container {
   display: grid;
   height: 400px;
   width: 400px;
-  border: 2px solid #46afe3;
+  border: 2px solid #df80ff;
   background-color: #e5e5e5;
   grid-template-columns: repeat(var(--colNum), 1fr);
   grid-template-rows: repeat(var(--rowNum), 1fr);
