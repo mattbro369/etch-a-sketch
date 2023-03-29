@@ -52,7 +52,34 @@ function appendDivs() {
 function changeColour(e) {
   if (e.target.className === "grid-items") {
     e.target.style.backgroundColor = `rgb(${calcRandomNum()}, ${calcRandomNum()}, ${calcRandomNum()})`;
-    //Prototype for RGB colour randomizer
+  }
+}
+
+//TODO Prototype for 10% more black
+//Prototype for RGB colour randomizer
+
+function changeColour(e) {
+  if (
+    (e.target.className === "grid-items" &&
+      e.target.getAttribute("style") === null) ||
+    (e.target.className === "grid-items" &&
+      e.target.getAttribute("style") === "")
+  ) {
+    e.target.style.backgroundColor = `rgb(${calcRandomNum()}, ${calcRandomNum()}, ${calcRandomNum()})`;
+  } else {
+    let targetStyle = e.target.style.backgroundColor;
+    targetStyle = targetStyle.slice(4, -1);
+    targetStyle = targetStyle.replaceAll(",", "");
+    let targetStyleArray = targetStyle.split(" ");
+    targetStyleArray = targetStyleArray.map(Number);
+    targetStyleArray.forEach(function reduceNum(item, index, arr) {
+      arr[index] = item - 255 / 10;
+      e.target.style.backgroundColor = `rgb(${Math.round(
+        targetStyleArray[0]
+      )}, ${Math.round(targetStyleArray[1])}, ${Math.round(
+        targetStyleArray[2]
+      )})`;
+    });
   }
 }
 
@@ -70,3 +97,21 @@ function clearGrid() {
 function calcRandomNum() {
   return (randomNum = Math.floor(Math.random() * 256));
 }
+
+function reduceNum(item, index, arr) {
+  arr[index] = item * 10;
+}
+
+// TEST CODE
+
+// test = getContainer.firstChild.style.backgroundColor;
+// testSplit = test.slice(4, -1);
+// testSplit = testSplit.replaceAll(",", "");
+// let testArray = testSplit.split(" ");
+// testArray = testArray.map(Number);
+// testArray.forEach(function reduceNum(item, index, arr) {
+//   arr[index] = item - item / 10;
+// // });
+// e.target.style.backgroundColor = `rgb(${Math.round(testArray[0])}, ${Math.round(
+//   testArray[1]
+// )}, ${Math.round(testArray[2])})`;
